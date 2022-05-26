@@ -36,7 +36,9 @@ app = Flask(__name__)
 @app.route("/hisseler")
 def hisseler():
     
-    return json.dumps({"hisseler" : veriler})
+    response = json.dumps({"hisseler" : veriler})
+    response.headers.add("Access-Control-Allow-Origin","*")
+    return response
     #return {"members":["member1","member2","member3"]}
 
 if __name__ == "__main__":
