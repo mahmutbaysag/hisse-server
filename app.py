@@ -2,6 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 from flask import Flask
+from flask_cors import CORS
 
 URL = "https://finans.mynet.com/borsa/hisseler"
 page = requests.get(URL)
@@ -32,13 +33,12 @@ def myFunc(e):
 veriler.sort(reverse=True,key=myFunc)
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/hisseler")
 def hisseler():
     
-    response = json.dumps({"hisseler" : veriler})
-    response.headers.add("Access-Control-Allow-Origin","*")
-    return response
+    return json.dumps({"hisseler" : veriler})
     #return {"members":["member1","member2","member3"]}
 
 if __name__ == "__main__":
