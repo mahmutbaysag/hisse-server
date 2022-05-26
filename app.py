@@ -33,7 +33,7 @@ def myFunc(e):
 veriler.sort(reverse=True,key=myFunc)
 
 app = Flask(__name__)
-cors = CORS(app)
+cors = CORS(app,resources={r'/hisseler': {'origins': 'https://hiss-e.herokuapp.com/'}})
 app.config['CORS_HEADER'] = 'Content-Type'
 
 @app.route("/hisseler")
