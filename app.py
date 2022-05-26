@@ -1,4 +1,3 @@
-from flask_cors import CORS
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -34,10 +33,9 @@ def myFunc(e):
 veriler.sort(reverse=True,key=myFunc)
 
 app = Flask(__name__)
-CORS(app)
 
-@app.route("/hisseler", methods=['GET'])
-#@cross_origin()
+@app.route("/hisseler")
+
 def hisseler():
     
     return json.dumps({"hisseler" : veriler})
