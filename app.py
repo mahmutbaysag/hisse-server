@@ -37,7 +37,7 @@ cors = CORS(app,resources={r'/hisseler': {'origins': 'https://hiss-e.herokuapp.c
 app.config['CORS_HEADER'] = 'Content-Type'
 
 @app.route("/hisseler")
-#@cross_origin()
+@cross_origin()
 def hisseler():
     
     return json.dumps({"hisseler" : veriler})
